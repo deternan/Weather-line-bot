@@ -71,10 +71,9 @@ public class EchoApplication
   	          }
   	        } catch (Exception ex) {
   	          ex.printStackTrace();
-  	        }
-        	
-        	return new TextMessage(get_return);
-        }        
+  	        }        	
+        }   
+        return new TextMessage(get_return);
     }
 
     @EventMapping
