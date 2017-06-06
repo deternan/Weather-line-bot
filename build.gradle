@@ -96,7 +96,9 @@ subprojects {
     }
 
     dependencies {
-        compileOnly 'org.projectlombok:lombok'
+        compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
+		
+		compileOnly 'org.projectlombok:lombok'
         testCompileOnly 'org.projectlombok:lombok'
 
         compileOnly "org.springframework.boot:spring-boot-configuration-processor" // http://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html#configuration-metadata-annotation-processor
