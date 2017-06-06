@@ -70,9 +70,7 @@ subprojects {
         effort = "max"
         reportLevel = "high"
         visitors = ["FindSqlInjection", "SwitchFallthrough"]
-        omitVisitors = ["FindNonShortCircuit"]
-        includeFilter = file("$rootProject.projectDir/config/includeFilter.xml")
-        excludeFilter = file("$rootProject.projectDir/config/excludeFilter.xml")
+        omitVisitors = ["FindNonShortCircuit"]        
     }
 	
 	
