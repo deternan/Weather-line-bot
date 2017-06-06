@@ -38,7 +38,9 @@ public class EchoApplication
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
         System.out.println("event: " + event);
 		// CJKV check
-		String get_return = CJKV_check(event.getMessage().getText());
+		//String get_return = CJKV_check(event.getMessage().getText());
+        String get_return = event.getMessage().getText();
+        
 		return new TextMessage(get_return);
         //return new TextMessage("Auto:  "+event.getMessage().getText());
     }
@@ -48,20 +50,20 @@ public class EchoApplication
         System.out.println("event: " + event);
     }
 	
-	public String CJKV_check(String input_str)
-	{
-		boolean check;
-		String return_str = "";
-		check = input_str.codePoints().anyMatch(codepoint ->
-	            Character.UnicodeScript.of(codepoint) == Character.UnicodeScript.HAN);
-		
-		//System.out.println(check);
-		if(check == true){
-			return_str = "Non English";
-		}else{
-			return_str = "English";
-		}
-		
-		return return_str;
-	}
+//	public String CJKV_check(String input_str)
+//	{
+//		boolean check;
+//		String return_str = "";
+//		check = input_str.codePoints().anyMatch(codepoint ->
+//	            Character.UnicodeScript.of(codepoint) == Character.UnicodeScript.HAN);
+//		
+//		//System.out.println(check);
+//		if(check == true){
+//			return_str = "Non English";
+//		}else{
+//			return_str = "English";
+//		}
+//		
+//		return return_str;
+//	}
 }
