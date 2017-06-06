@@ -61,8 +61,7 @@ subprojects {
     apply plugin: 'propdeps-eclipse'
     apply plugin: 'findbugs'
 	
-	findbugs {
-        toolVersion = "3.0.3"
+	findbugs {        
         sourceSets = [sourceSets.main]
         ignoreFailures = true
 		findbugsTest.enabled=false
