@@ -36,7 +36,7 @@ import ai.api.model.AIResponse;
 public class EchoApplication 
 {
 	// Key
-	AIConfiguration configuration = new AIConfiguration("8f40587522484b42a2d070bf8783e870");
+	AIConfiguration configuration = new AIConfiguration("");
 	AIDataService dataService = new AIDataService(configuration);
 	
 	public static void main(String[] args) 
