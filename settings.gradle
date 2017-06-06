@@ -2,6 +2,7 @@ include 'line-bot-api-client'
 include 'line-bot-model'
 include 'line-bot-servlet'
 include 'line-bot-spring-boot'
+include 'libai'
 
 /*
  * Copyright 2016 LINE Corporation
