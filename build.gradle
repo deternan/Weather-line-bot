@@ -62,7 +62,7 @@ subprojects {
     apply plugin: 'findbugs'
 	
 	findbugs {
-        toolVersion = "3.0.4"
+        toolVersion = "3.0.3"
         sourceSets = [sourceSets.main]
         ignoreFailures = true
 		findbugsTest.enabled=false
@@ -115,6 +115,7 @@ subprojects {
 		compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
 		compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
 		compile group: 'junit', name: 'junit', version: '4.12'
+		compile group: 'org.codehaus.mojo', name: 'findbugs-maven-plugin', version: '3.0.3'
   
 		compileOnly 'org.projectlombok:lombok'
         testCompileOnly 'org.projectlombok:lombok'
