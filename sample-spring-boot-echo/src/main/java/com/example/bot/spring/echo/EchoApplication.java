@@ -54,7 +54,7 @@ public class EchoApplication
         //String get_return = event.getMessage().getText();
         //return new TextMessage(get_return);
         String line;
-        String get_return;
+        String get_return = "null";
         // AI
         //while (null != (line = event.getMessage().getText())) 
         {
