@@ -3,8 +3,8 @@ sudo: false
 jdk:
   - oraclejdk8
 install: 
+  - ./gradlew check
   - wget https://github.com/google/protobuf/releases/download/v3.1.0/protoc-3.1.0-linux-x86_64.zip
   - unzip protoc-3.1.0-linux-x86_64.zip -d ~
   - export PATH=$PATH:~/bin
   - protoc --version
-  - ./gradlew check
