@@ -26,23 +26,50 @@ import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
+import ai.api.AIConfiguration;
+import ai.api.AIDataService;
+import ai.api.model.AIRequest;
+import ai.api.model.AIResponse;
+
 @SpringBootApplication
 @LineMessageHandler
 public class EchoApplication 
 {
-    public static void main(String[] args) {
-        SpringApplication.run(EchoApplication.class, args);
+	// Key
+	AIConfiguration configuration = new AIConfiguration("8f40587522484b42a2d070bf8783e870");
+	AIDataService dataService = new AIDataService(configuration);
+	
+	public static void main(String[] args) 
+    {        
+    	SpringApplication.run(EchoApplication.class, args);
     }
 
     @EventMapping
-    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) 
+    {
         System.out.println("event: " + event);
 		// CJKV check
 		//String get_return = CJKV_check(event.getMessage().getText());
-        String get_return = event.getMessage().getText();
-        
-		return new TextMessage(get_return);
-        //return new TextMessage("Auto:  "+event.getMessage().getText());
+        // Default (the same input)
+        //String get_return = event.getMessage().getText();
+        //return new TextMessage(get_return);
+        String line;
+        // AI
+        while (null != (line = event.getMessage().getText())) 
+        {
+        	try {
+  	          AIRequest request = new AIRequest(line);
+  	          AIResponse response = dataService.request(request);
+
+  	          if (response.getStatus().getCode() == 200) {
+  	            System.out.println(response.getResult().getFulfillment().getSpeech());
+  	          } else {
+  	            System.err.println(response.getStatus().getErrorDetails());
+  	          }
+  	        } catch (Exception ex) {
+  	          ex.printStackTrace();
+  	        }
+        }
     }
 
     @EventMapping
@@ -50,6 +77,7 @@ public class EchoApplication
         System.out.println("event: " + event);
     }
 	
+    
 //	public String CJKV_check(String input_str)
 //	{
 //		boolean check;
