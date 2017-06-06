@@ -61,7 +61,8 @@ subprojects {
     apply plugin: 'propdeps-eclipse'
     apply plugin: 'findbugs'
 	
-	findbugs {        
+	findbugs {
+        toolVersion = "3.0.1"
         sourceSets = [sourceSets.main]
         ignoreFailures = true
 		findbugsTest.enabled=false
@@ -70,9 +71,10 @@ subprojects {
         reportLevel = "high"
         visitors = ["FindSqlInjection", "SwitchFallthrough"]
         omitVisitors = ["FindNonShortCircuit"]
-        includeFilter = file("$rootProject.projectDir/config/findbugs/includeFilter.xml")
-        excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
+        includeFilter = file("$rootProject.projectDir/config/includeFilter.xml")
+        excludeFilter = file("$rootProject.projectDir/config/excludeFilter.xml")
     }
+	
 	
     apply plugin: 'java'
     if (new File("${project.rootDir}/.git").exists()) {
