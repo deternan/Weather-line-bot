@@ -60,6 +60,20 @@ subprojects {
     apply plugin: 'propdeps-idea'
     apply plugin: 'propdeps-eclipse'
     apply plugin: 'findbugs'
+	
+	findbugs {
+        toolVersion = "2.0.1"
+        sourceSets = [sourceSets.main]
+        ignoreFailures = true
+        reportsDir = file("$project.buildDir/findbugsReports")
+        effort = "max"
+        reportLevel = "high"
+        visitors = ["FindSqlInjection", "SwitchFallthrough"]
+        omitVisitors = ["FindNonShortCircuit"]
+        includeFilter = file("$rootProject.projectDir/config/findbugs/includeFilter.xml")
+        excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
+    }
+	
     apply plugin: 'java'
     if (new File("${project.rootDir}/.git").exists()) {
         logger.info("There's .git directory. Create git.properties.")
@@ -218,15 +232,3 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.0'
 }
 
-findbugs {
-        toolVersion = "2.0.1"
-        sourceSets = [sourceSets.main]
-        ignoreFailures = true
-        reportsDir = file("$project.buildDir/findbugsReports")
-        effort = "max"
-        reportLevel = "high"
-        visitors = ["FindSqlInjection", "SwitchFallthrough"]
-        omitVisitors = ["FindNonShortCircuit"]
-        includeFilter = file("$rootProject.projectDir/config/findbugs/includeFilter.xml")
-        excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
-    }
