@@ -54,10 +54,12 @@ public class EchoApplication
         //String get_return = event.getMessage().getText();
         //return new TextMessage(get_return);
         String line;
-        String get_return = "";
+        String get_return;
         // AI
-        while (null != (line = event.getMessage().getText())) 
+        //while (null != (line = event.getMessage().getText())) 
         {
+        	line = event.getMessage().getText();
+        	
         	try {
   	          AIRequest request = new AIRequest(line);
   	          AIResponse response = dataService.request(request);
@@ -73,7 +75,7 @@ public class EchoApplication
   	          ex.printStackTrace();
   	        }        	
         }   
-        return new TextMessage(get_return);
+        return new TextMessage("Auto: "+get_return);
     }
 
     @EventMapping
