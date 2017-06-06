@@ -47,7 +47,7 @@ public class EchoApplication
     @EventMapping
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) 
     {
-        //System.out.println("event: " + event);
+        System.out.println("event: " + event);
 		// CJKV check
 		//String get_return = CJKV_check(event.getMessage().getText());
         // Default (the same input)
