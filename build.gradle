@@ -217,3 +217,27 @@ repositories {
 task wrapper(type: Wrapper) {
     gradleVersion = '3.0'
 }
+
+findbugs{
+    ignoreFailures=true
+    findbugsTest.enabled=false
+
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+tasks.withType(Pmd){
+    reports{
+        xml.enabled=true
+        html.enabled=true
+    }
+}
+pmd {
+   ignoreFailures = true
+    pmdTest.enabled=false
+}
