@@ -47,13 +47,14 @@ public class EchoApplication
     @EventMapping
     public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) 
     {
-        System.out.println("event: " + event);
+        //System.out.println("event: " + event);
 		// CJKV check
 		//String get_return = CJKV_check(event.getMessage().getText());
         // Default (the same input)
         //String get_return = event.getMessage().getText();
         //return new TextMessage(get_return);
         String line;
+        String get_return = "";
         // AI
         while (null != (line = event.getMessage().getText())) 
         {
@@ -62,14 +63,18 @@ public class EchoApplication
   	          AIResponse response = dataService.request(request);
 
   	          if (response.getStatus().getCode() == 200) {
-  	            System.out.println(response.getResult().getFulfillment().getSpeech());
+  	            //System.out.println(response.getResult().getFulfillment().getSpeech());
+  	            get_return = response.getResult().getFulfillment().getSpeech();
   	          } else {
-  	            System.err.println(response.getStatus().getErrorDetails());
+  	            //System.err.println(response.getStatus().getErrorDetails());
+  	        	get_return = response.getStatus().getErrorDetails();
   	          }
   	        } catch (Exception ex) {
   	          ex.printStackTrace();
   	        }
-        }
+        	
+        	return new TextMessage(get_return);
+        }        
     }
 
     @EventMapping
