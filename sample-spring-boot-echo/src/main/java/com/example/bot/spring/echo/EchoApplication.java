@@ -54,7 +54,7 @@ public class EchoApplication
         //String get_return = event.getMessage().getText();
         //return new TextMessage(get_return);
         String line;
-        String get_return = "null";
+        String get_return = "";
         // AI
         //while (null != (line = event.getMessage().getText())) 
         {
@@ -74,8 +74,14 @@ public class EchoApplication
   	        } catch (Exception ex) {
   	          ex.printStackTrace();
   	        }        	
-        }   
-        return new TextMessage("Auto: "+get_return);
+        }
+        
+        if(get_return.length() == 0){
+        	return new TextMessage("機器人的反應有點慢");
+        }else{
+        	return new TextMessage(get_return);
+        }
+        //return new TextMessage("Auto: "+get_return);
     }
 
     @EventMapping
