@@ -8,3 +8,5 @@ install:
   - unzip protoc-3.1.0-linux-x86_64.zip -d ~
   - export PATH=$PATH:~/bin
   - protoc --version
+script: mvn test
+    
