@@ -148,8 +148,10 @@ public class EchoApplication
 
 					if (response.getResult().getAction().toString().equalsIgnoreCase(AI_weather_action)) {
 						// System.out.println(response.getResult().getAction());
-						XML_parser();
-						Weather_query_answer(AI_Weather_query);
+//						XML_parser();
+//						Weather_query_answer(AI_Weather_query);
+						
+						get_return = input_location+"	"+AI_Weather_query;
 					}
 				} else {
 					get_return = response.getStatus().getErrorDetails();
@@ -275,7 +277,7 @@ public class EchoApplication
 		}
 		
 		if(query_input.equalsIgnoreCase("下雨")){
-			get_return = AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value;
+			get_return = AI_Location+"濕度"+(HUMD_value*100)+"%;\n 累積雨量:"+_24R_value;
 			//System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
 			System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%");
 			System.out.println("累積雨量:"+_24R_value);
