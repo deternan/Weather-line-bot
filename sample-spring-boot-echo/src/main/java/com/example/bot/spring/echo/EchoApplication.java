@@ -79,6 +79,9 @@ public class EchoApplication
 	// Input
 	private String input_location;
 	
+	// AI.Output
+	private String get_return = "";
+	
 	// Key
 	AIConfiguration configuration = new AIConfiguration(key_str);
 	AIDataService dataService = new AIDataService(configuration);
@@ -93,7 +96,7 @@ public class EchoApplication
     {
         System.out.println("event: " + event);		
         String line;
-        String get_return = "";
+        
         // AI
         //while (null != (line = event.getMessage().getText())) 
 //        {
@@ -137,8 +140,7 @@ public class EchoApplication
 					if (response.getResult().getParameters().get("Weather_query") != null) {
 						AI_Weather_query = response.getResult().getParameters().get("Weather_query").toString();
 					}
-					// System.out.println(AI_Location+" "+AI_TimeDescription+"
-					// "+AI_Weather_query);
+					// System.out.println(AI_Location+" "+AI_TimeDescription+"	"+AI_Weather_query);
 					// System.out.println(response.getResult().getFulfillment().getSpeech());
 
 					if (response.getResult().getAction().toString().equalsIgnoreCase(AI_weather_action)) {
@@ -147,6 +149,7 @@ public class EchoApplication
 						Weather_query_answer(AI_Weather_query);
 					}
 				} else {
+					get_return = response.getStatus().getErrorDetails();
 					System.err.println(response.getStatus().getErrorDetails());
 				}
 			} catch (Exception ex) {
@@ -269,6 +272,7 @@ public class EchoApplication
 		}
 		
 		if(query_input.equalsIgnoreCase("下雨")){
+			get_return = AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value;
 			System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
 		}else if(query_input.equalsIgnoreCase("溫度")){
 			
