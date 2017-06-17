@@ -151,7 +151,7 @@ public class EchoApplication
 //						XML_parser();
 //						Weather_query_answer(AI_Weather_query);
 						
-						get_return = input_location+"	"+AI_Weather_query;
+						get_return = AI_Location+"	"+AI_TimeDescription+"	"+AI_Weather_query;
 					}
 				} else {
 					get_return = response.getStatus().getErrorDetails();
@@ -160,12 +160,11 @@ public class EchoApplication
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
-		}
-        
+		}        
         
         
         if(get_return.length() == 0){
-        	return new TextMessage("機器人的反應有點慢");
+        	return new TextMessage("不好意思, 機器人的反應有點慢");
         }else{
         	return new TextMessage(get_return);
         }
@@ -279,17 +278,18 @@ public class EchoApplication
 		if(query_input.equalsIgnoreCase("下雨")){
 			get_return = AI_Location+"濕度"+(HUMD_value*100)+"%;\n 累積雨量:"+_24R_value;
 			//System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
-			System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%");
-			System.out.println("累積雨量:"+_24R_value);
+			//System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%");
+			//System.out.println("累積雨量:"+_24R_value);
 		}else if(query_input.equalsIgnoreCase("溫度")){
 			get_return = "我只會看有沒有下雨而已";
-			System.out.println("我只會看有沒有下雨而已");
+			//System.out.println("我只會看有沒有下雨而已");
 		}
 	}
     
 	private void Clean()
 	{
 		get_return = "";
+		input_location = "";
 		TEMP_value = 0;
 		HUMD_value = 0;
 		PRES_value = 0;
