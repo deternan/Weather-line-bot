@@ -123,6 +123,7 @@ public class EchoApplication
 			line = event.getMessage().getText();
 			
 			try {
+				get_return = "";
 				AIRequest request = new AIRequest(line);
 				AIResponse response = dataService.request(request);
 
@@ -275,7 +276,8 @@ public class EchoApplication
 			get_return = AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value;
 			System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
 		}else if(query_input.equalsIgnoreCase("溫度")){
-			
+			get_return = "我只會看有沒有下雨而已";
+			System.out.println("我只會看有沒有下雨而已");
 		}
 	}
     
