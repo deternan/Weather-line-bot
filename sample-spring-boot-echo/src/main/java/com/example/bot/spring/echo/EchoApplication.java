@@ -123,7 +123,9 @@ public class EchoApplication
 			line = event.getMessage().getText();
 			
 			try {
-				get_return = "";
+				// Clean all data
+				Clean();
+				
 				AIRequest request = new AIRequest(line);
 				AIResponse response = dataService.request(request);
 
@@ -274,13 +276,25 @@ public class EchoApplication
 		
 		if(query_input.equalsIgnoreCase("下雨")){
 			get_return = AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value;
-			System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
+			//System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
+			System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%");
+			System.out.println("累積雨量:"+_24R_value);
 		}else if(query_input.equalsIgnoreCase("溫度")){
 			get_return = "我只會看有沒有下雨而已";
 			System.out.println("我只會看有沒有下雨而已");
 		}
 	}
     
+	private void Clean()
+	{
+		get_return = "";
+		TEMP_value = 0;
+		HUMD_value = 0;
+		PRES_value = 0;
+		_24R_value = 0;
+		WDSD_value = 0;
+	}
+	
     
     @EventMapping
     public void handleDefaultMessageEvent(Event event) {
