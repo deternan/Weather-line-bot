@@ -55,7 +55,7 @@ public class EchoApplication
 {
 	// AI.API
 	// Key
-	private String key_str = "8f40587522484b42a2d070bf8783e870";
+	private String key_str = "";
 	// Parameters
 	private String AI_Location;
 	private String AI_TimeDescription;
@@ -67,7 +67,7 @@ public class EchoApplication
 	private final String USER_AGENT = "Mozilla/5.0";
 	// CWB open data
 	private String dataid = "O-A0003-001";;
-	private String key = "CWB-2D3A0C17-2350-4B0D-83BA-E7F7A45BFF6F";
+	private String key = "";
 	// Tag
 	private String TEMP = "TEMP"; 	// 溫度
 	private String HUMD = "HUMD"; 	// 濕度
