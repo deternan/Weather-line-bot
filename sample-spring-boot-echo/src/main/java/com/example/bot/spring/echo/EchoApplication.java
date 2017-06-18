@@ -12,6 +12,10 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations
  * under the License.
+ * 
+ * Revised 
+ * June 19, 2017 01:36 AM
+ * 
  */
 
 package com.example.bot.spring.echo;
@@ -150,10 +154,10 @@ public class EchoApplication
 
 					if (response.getResult().getAction().toString().equalsIgnoreCase(AI_weather_action)) {
 						// System.out.println(response.getResult().getAction());
-//						XML_parser();
-//						Weather_query_answer(AI_Weather_query);
+						XML_parser();
+						Weather_query_answer(AI_Weather_query);
 						
-						get_return = AI_Location+"	"+AI_TimeDescription+"	"+AI_Weather_query;
+						//get_return = AI_Location+"	"+AI_TimeDescription+"	"+AI_Weather_query;
 						
 					}else{
 						//System.out.println(response.getResult().getFulfillment().getSpeech());
@@ -269,6 +273,12 @@ public class EchoApplication
 		
 		if(input.trim().equalsIgnoreCase("台北")){
 			change_str = "臺北";
+		}else if(input.trim().equalsIgnoreCase("台中")){
+			change_str = "臺中";
+		}else if(input.trim().equalsIgnoreCase("台南")){
+			change_str = "臺南";
+		}else{
+			change_str = input;
 		}
 
 		//System.out.println(input.length()+"	"+change_str);
@@ -283,7 +293,8 @@ public class EchoApplication
 			//System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%");
 			//System.out.println("累積雨量:"+_24R_value);
 		}else if(query_input.equalsIgnoreCase("溫度")){
-			get_return = "我只會看有沒有下雨而已";
+			get_return = AI_Location+AI_TimeDescription+"溫度"+TEMP_value;
+			//get_return = "我只會看有沒有下雨而已";
 			//System.out.println("我只會看有沒有下雨而已");
 		}
 	}
