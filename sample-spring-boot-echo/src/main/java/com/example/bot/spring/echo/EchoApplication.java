@@ -157,7 +157,7 @@ public class EchoApplication
 						XML_parser();
 						Weather_query_answer(AI_Weather_query);
 						
-						//get_return = AI_Location+"	"+AI_TimeDescription+"	"+AI_Weather_query;
+						get_return = AI_Location+"	"+AI_TimeDescription+"	"+AI_Weather_query;
 						
 					}else{
 						//System.out.println(response.getResult().getFulfillment().getSpeech());
