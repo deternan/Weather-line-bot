@@ -163,6 +163,8 @@ public class EchoApplication
 						//System.out.println(response.getResult().getFulfillment().getSpeech());
 						get_return = response.getResult().getFulfillment().getSpeech().toString();
 					}
+					
+					get_return = response.getResult().getAction().toString();
 				} else {
 					get_return = response.getStatus().getErrorDetails();
 					System.err.println(response.getStatus().getErrorDetails());
