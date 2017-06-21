@@ -156,15 +156,14 @@ public class EchoApplication
 						// System.out.println(response.getResult().getAction());
 						XML_parser();
 						Weather_query_answer(AI_Weather_query);
-						
-						get_return = AI_Taiwancity+"	"+AI_TimeDescription+"	"+AI_Weather_query;
+						get_return = AI_weather_action;
+						//get_return = AI_Taiwancity+"	"+AI_TimeDescription+"	"+AI_Weather_query;
 						
 					}else{
 						//System.out.println(response.getResult().getFulfillment().getSpeech());
 						get_return = response.getResult().getFulfillment().getSpeech().toString();
 					}
 					
-					get_return = response.getResult().getAction().toString();
 				} else {
 					get_return = response.getStatus().getErrorDetails();
 					System.err.println(response.getStatus().getErrorDetails());
