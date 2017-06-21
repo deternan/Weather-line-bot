@@ -125,11 +125,10 @@ public class EchoApplication
 		//while (null != (line = reader.readLine())) 
 		{
 			line = event.getMessage().getText();
-			
-			try {
-				// Clean all data
-				Clean();
-				
+			// Clean all data
+			Clean();
+		
+			try {				
 				AIRequest request = new AIRequest(line);
 				AIResponse response = dataService.request(request);
 
@@ -156,7 +155,7 @@ public class EchoApplication
 						// System.out.println(response.getResult().getAction());
 						XML_parser();
 						Weather_query_answer(AI_Weather_query);
-						get_return = AI_weather_action;
+						//get_return = AI_weather_action;
 						//get_return = AI_Taiwancity+"	"+AI_TimeDescription+"	"+AI_Weather_query;
 						
 					}else{
