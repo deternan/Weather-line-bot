@@ -57,7 +57,7 @@ public class EchoApplication
 	// Key
 	private String key_str = "8f40587522484b42a2d070bf8783e870";
 	// Parameters
-	private String AI_Location;
+	private String AI_Taiwancity;
 	private String AI_TimeDescription;
 	private String AI_Weather_query;
 	private String AI_weather_action = "query.weather.action";
@@ -135,11 +135,11 @@ public class EchoApplication
 
 				if (response.getStatus().getCode() == 200) {
 					
-					if (response.getResult().getParameters().get("Location") != null) {
-						AI_Location = response.getResult().getParameters().get("Location").toString();
-						AI_Location = AI_Location.substring(1, AI_Location.length() - 1);
-						input_location = Location_change(AI_Location);
-						// System.out.println(AI_Location+" "+input_location);
+					if (response.getResult().getParameters().get("Taiwancity") != null) {
+						AI_Taiwancity = response.getResult().getParameters().get("Taiwancity").toString();
+						AI_Taiwancity = AI_Taiwancity.substring(1, AI_Taiwancity.length() - 1);
+						input_location = Location_change(AI_Taiwancity);
+						// System.out.println(AI_Taiwancity+" "+input_location);
 					}
 					if (response.getResult().getParameters().get("Time_description") != null) {
 						AI_TimeDescription = response.getResult().getParameters().get("Time_description").toString();
@@ -149,7 +149,7 @@ public class EchoApplication
 						AI_Weather_query = response.getResult().getParameters().get("Weather_query").toString();
 						AI_Weather_query = AI_Weather_query.substring(1, AI_Weather_query.length()-1);
 					}
-					// System.out.println(AI_Location+" "+AI_TimeDescription+"	"+AI_Weather_query);
+					// System.out.println(AI_Taiwancity+" "+AI_TimeDescription+"	"+AI_Weather_query);
 					
 
 					if (response.getResult().getAction().toString().equalsIgnoreCase(AI_weather_action)) {
@@ -157,7 +157,7 @@ public class EchoApplication
 						XML_parser();
 						Weather_query_answer(AI_Weather_query);
 						
-						get_return = AI_Location+"	"+AI_TimeDescription+"	"+AI_Weather_query;
+						get_return = AI_Taiwancity+"	"+AI_TimeDescription+"	"+AI_Weather_query;
 						
 					}else{
 						//System.out.println(response.getResult().getFulfillment().getSpeech());
@@ -288,12 +288,12 @@ public class EchoApplication
 	private void Weather_query_answer(String query_input)
 	{
 		if(query_input.equalsIgnoreCase("下雨")){
-			get_return = AI_Location+"濕度"+(HUMD_value*100)+"%;\n 累積雨量:"+_24R_value;
-			//System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
-			//System.out.println(AI_Location+"濕度"+(HUMD_value*100)+"%");
+			get_return = AI_Taiwancity+"濕度"+(HUMD_value*100)+"%;\n 累積雨量:"+_24R_value;
+			//System.out.println(AI_Taiwancity+"濕度"+(HUMD_value*100)+"%; 累積雨量:"+_24R_value);
+			//System.out.println(AI_Taiwancity+"濕度"+(HUMD_value*100)+"%");
 			//System.out.println("累積雨量:"+_24R_value);
 		}else if(query_input.equalsIgnoreCase("溫度")){
-			get_return = AI_Location+AI_TimeDescription+"溫度"+TEMP_value;
+			get_return = AI_Taiwancity+AI_TimeDescription+"溫度"+TEMP_value;
 			//get_return = "我只會看有沒有下雨而已";
 			//System.out.println("我只會看有沒有下雨而已");
 		}
